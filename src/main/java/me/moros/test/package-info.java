@@ -19,7 +19,6 @@
 
 @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.PARAMETER)
 @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.RETURN)
-
 package me.moros.test;
 
 import org.checkerframework.checker.nullness.qual.NonNull;

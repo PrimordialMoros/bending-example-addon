@@ -22,42 +22,29 @@ package me.moros.test;
 import java.util.ResourceBundle;
 
 import me.moros.bending.locale.Message;
-import me.moros.bending.model.ability.description.AbilityDescription;
+import me.moros.bending.locale.Translation;
+import me.moros.bending.model.Element;
+import me.moros.bending.model.ability.AbilityDescription;
+import me.moros.bending.model.ability.Activation;
 import me.moros.bending.registry.Registries;
 import me.moros.test.ability.EarthDome;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.translation.GlobalTranslator;
-import net.kyori.adventure.translation.TranslationRegistry;
 import net.kyori.adventure.util.UTF8ResourceBundleControl;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.checker.nullness.qual.Nullable;
-
-import static me.moros.bending.model.Element.EARTH;
-import static me.moros.bending.model.ability.Activation.SNEAK;
 
 public class Bootstrap extends JavaPlugin {
   @Override
-  public void onLoad() {
+  public void onLoad() { // Notice, we use onLoad and not onEnable.
     // First let's register our AbilityDescription
     AbilityDescription earthDome = AbilityDescription.builder("EarthDome", EarthDome::new)
-      .element(EARTH).activation(SNEAK).build();
+      .element(Element.EARTH).activation(Activation.SNEAK).build();
     Registries.ABILITIES.register(earthDome);
 
-    // Now we attempt to register a translation for our ability
-    TranslationRegistry registry = findBendingTranslator(); // There is no proper api for this yet, so we use this unorthodox method
-    if (registry != null) {
-      ResourceBundle bundle = ResourceBundle.getBundle("earthdome", Message.DEFAULT_LOCALE, UTF8ResourceBundleControl.get());
-      registry.registerAll(Message.DEFAULT_LOCALE, bundle, false);
-    }
-  }
+    // Now we construct a translation for the default locale
+    // Note: You can also manually construct a translation using Translation#create but bundles are easier to manage for multiple keys
+    ResourceBundle bundle = ResourceBundle.getBundle("earthdome", Message.DEFAULT_LOCALE, UTF8ResourceBundleControl.get());
+    // If you want to register multiple locales then make sure to provide unique keys for each locale.
+    Translation translation = Translation.fromBundle(earthDome.key(), bundle); // Since we are only registering one locale, we'll use the ability key
 
-  private @Nullable TranslationRegistry findBendingTranslator() {
-    Key key = Key.key("bending", "translations");
-    for (var translator : GlobalTranslator.translator().sources()) {
-      if (key.equals(translator.name()) && translator instanceof TranslationRegistry registry) {
-        return registry;
-      }
-    }
-    return null;
+    Registries.TRANSLATIONS.register(translation); // Register the translation containing description and instructions for EarthDome
   }
 }

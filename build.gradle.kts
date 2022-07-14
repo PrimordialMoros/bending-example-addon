@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.moros"
-version = "1.0.0"
+version = "1.1.0"
 
 java {
     toolchain {
@@ -12,12 +12,13 @@ java {
 }
 
 repositories {
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    mavenCentral() // for bending-api releases
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/") // for bending-api snapshots
     maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
-    compileOnly("me.moros", "bending-api", "2.0.0-SNAPSHOT")
+    compileOnly("me.moros", "bending-api", "2.1.0")
     compileOnly("io.papermc.paper", "paper-api", "1.18.2-R0.1-SNAPSHOT")
 }
 

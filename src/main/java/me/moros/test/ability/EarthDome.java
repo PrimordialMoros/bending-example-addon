@@ -26,18 +26,18 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
 
-import me.moros.bending.ability.common.Pillar;
 import me.moros.bending.config.Configurable;
-import me.moros.bending.game.temporal.TempBlock;
+import me.moros.bending.model.ability.AbilityDescription;
 import me.moros.bending.model.ability.AbilityInstance;
 import me.moros.bending.model.ability.Activation;
-import me.moros.bending.model.ability.description.AbilityDescription;
+import me.moros.bending.model.ability.common.Pillar;
 import me.moros.bending.model.attribute.Attribute;
 import me.moros.bending.model.attribute.Modifiable;
 import me.moros.bending.model.math.FastMath;
-import me.moros.bending.model.predicate.removal.Policies;
-import me.moros.bending.model.predicate.removal.RemovalPolicy;
+import me.moros.bending.model.predicate.Policies;
+import me.moros.bending.model.predicate.RemovalPolicy;
 import me.moros.bending.model.user.User;
+import me.moros.bending.temporal.TempBlock;
 import me.moros.bending.util.WorldUtil;
 import me.moros.bending.util.material.EarthMaterials;
 import org.bukkit.block.Block;
@@ -113,7 +113,7 @@ public class EarthDome extends AbilityInstance {
     return !pillars.isEmpty();
   }
 
-  private Optional<Pillar> createPillar(Block block, int height) {
+  private Optional<EarthPillar> createPillar(Block block, int height) {
     if (!predicate.test(block) || !TempBlock.isBendable(block)) {
       return Optional.empty();
     }
@@ -127,7 +127,7 @@ public class EarthDome extends AbilityInstance {
   }
 
   private static final class EarthPillar extends Pillar {
-    private EarthPillar(Builder builder) {
+    private EarthPillar(Builder<EarthPillar> builder) {
       super(builder);
     }
 
