@@ -19,8 +19,6 @@
 
 package me.moros.test.ability;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -30,16 +28,17 @@ import me.moros.bending.config.Configurable;
 import me.moros.bending.model.ability.AbilityDescription;
 import me.moros.bending.model.ability.AbilityInstance;
 import me.moros.bending.model.ability.Activation;
+import me.moros.bending.model.ability.MultiUpdatable;
 import me.moros.bending.model.ability.common.Pillar;
 import me.moros.bending.model.attribute.Attribute;
 import me.moros.bending.model.attribute.Modifiable;
-import me.moros.bending.model.math.FastMath;
 import me.moros.bending.model.predicate.Policies;
 import me.moros.bending.model.predicate.RemovalPolicy;
 import me.moros.bending.model.user.User;
 import me.moros.bending.temporal.TempBlock;
 import me.moros.bending.util.WorldUtil;
 import me.moros.bending.util.material.EarthMaterials;
+import me.moros.math.FastMath;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
@@ -50,7 +49,7 @@ public class EarthDome extends AbilityInstance {
   private RemovalPolicy removalPolicy;
 
   private Predicate<Block> predicate;
-  private Collection<Pillar> pillars;
+  private final MultiUpdatable<Pillar> pillars = MultiUpdatable.empty();
 
   public EarthDome(AbilityDescription desc) {
     super(desc);
@@ -65,7 +64,6 @@ public class EarthDome extends AbilityInstance {
       return false;
     }
     predicate = b -> EarthMaterials.isEarthNotLava(user, b);
-    pillars = new ArrayList<>();
     if (calculatePillars()) {
       removalPolicy = Policies.builder().add(Policies.NOT_SNEAKING).build();
       user.addCooldown(description(), userConfig.cooldown);
@@ -84,8 +82,7 @@ public class EarthDome extends AbilityInstance {
     if (removalPolicy.test(user, description())) {
       return UpdateResult.REMOVE;
     }
-    pillars.removeIf(p -> p.update() == UpdateResult.REMOVE);
-    return pillars.isEmpty() ? UpdateResult.REMOVE : UpdateResult.CONTINUE;
+    return pillars.update();
   }
 
   private boolean calculatePillars() {
