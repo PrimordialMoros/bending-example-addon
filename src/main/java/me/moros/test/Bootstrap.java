@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Moros
+ * Copyright 2022-2023 Moros
  *
  * This file is part of Bending.
  *
@@ -26,7 +26,7 @@ import me.moros.bending.locale.Translation;
 import me.moros.bending.model.Element;
 import me.moros.bending.model.ability.AbilityDescription;
 import me.moros.bending.model.ability.Activation;
-import me.moros.bending.registry.Registries;
+import me.moros.bending.model.registry.Registries;
 import me.moros.test.ability.EarthDome;
 import net.kyori.adventure.util.UTF8ResourceBundleControl;
 import org.bukkit.plugin.java.JavaPlugin;

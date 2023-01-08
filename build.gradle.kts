@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.moros"
-version = "1.2.0"
+version = "1.3.0"
 
 java {
     toolchain {
@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("me.moros", "bending-api", "2.2.0")
+    compileOnly("me.moros", "bending-api", "3.0.0-SNAPSHOT")
     compileOnly("io.papermc.paper", "paper-api", "1.18.2-R0.1-SNAPSHOT")
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Moros
+ * Copyright 2022-2023 Moros
  *
  * This file is part of Bending.
  *
@@ -35,12 +35,12 @@ import me.moros.bending.model.attribute.Modifiable;
 import me.moros.bending.model.predicate.Policies;
 import me.moros.bending.model.predicate.RemovalPolicy;
 import me.moros.bending.model.user.User;
+import me.moros.bending.platform.Direction;
+import me.moros.bending.platform.block.Block;
 import me.moros.bending.temporal.TempBlock;
 import me.moros.bending.util.WorldUtil;
 import me.moros.bending.util.material.EarthMaterials;
 import me.moros.math.FastMath;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 
 public class EarthDome extends AbilityInstance {
@@ -59,7 +59,6 @@ public class EarthDome extends AbilityInstance {
   public boolean activate(User user, Activation method) {
     this.user = user;
     loadConfig();
-
     if (!user.isOnGround()) {
       return false;
     }
@@ -89,17 +88,17 @@ public class EarthDome extends AbilityInstance {
     int offset = FastMath.ceil(userConfig.radius + 1);
     int size = offset * 2 + 1;
     boolean[][] checked = new boolean[size][size];
-    Block center = user.locBlock().getRelative(BlockFace.DOWN);
+    Block center = user.block().offset(Direction.DOWN);
     for (int i = 0; i < 2; i++) {
       double radius = userConfig.radius + i;
       int height = userConfig.height - i;
       for (Block block : WorldUtil.createBlockRing(center, radius)) {
-        int dx = offset + center.getX() - block.getX();
-        int dz = offset + center.getZ() - block.getZ();
+        int dx = offset + center.blockX() - block.blockX();
+        int dz = offset + center.blockZ() - block.blockZ();
         if (checked[dx][dz]) {
           continue;
         }
-        Optional<Pillar> pillar = WorldUtil.findTopBlock(block, height, predicate)
+        Optional<Pillar> pillar = block.world().findTop(block, height, predicate)
           .flatMap(b -> createPillar(b, height));
         if (pillar.isPresent()) {
           checked[dx][dz] = true;
