@@ -5,8 +5,4 @@ author: Moros
 description: Example ability for Bending
 website: https://github.com/PrimordialMoros/Bending
 depend: [Bending]
-api-version: 1.18
-permissions:
-  bending.ability.earthdome:
-    description: EarthDome ability permission node
-    default: true
+api-version: 1.19

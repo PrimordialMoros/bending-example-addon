@@ -24,22 +24,22 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
 
-import me.moros.bending.config.Configurable;
-import me.moros.bending.model.ability.AbilityDescription;
-import me.moros.bending.model.ability.AbilityInstance;
-import me.moros.bending.model.ability.Activation;
-import me.moros.bending.model.ability.MultiUpdatable;
-import me.moros.bending.model.ability.common.Pillar;
-import me.moros.bending.model.attribute.Attribute;
-import me.moros.bending.model.attribute.Modifiable;
-import me.moros.bending.model.predicate.Policies;
-import me.moros.bending.model.predicate.RemovalPolicy;
-import me.moros.bending.model.user.User;
-import me.moros.bending.platform.Direction;
-import me.moros.bending.platform.block.Block;
-import me.moros.bending.temporal.TempBlock;
-import me.moros.bending.util.WorldUtil;
-import me.moros.bending.util.material.EarthMaterials;
+import me.moros.bending.api.ability.AbilityDescription;
+import me.moros.bending.api.ability.AbilityInstance;
+import me.moros.bending.api.ability.Activation;
+import me.moros.bending.api.ability.MultiUpdatable;
+import me.moros.bending.api.ability.common.Pillar;
+import me.moros.bending.api.config.Configurable;
+import me.moros.bending.api.config.attribute.Attribute;
+import me.moros.bending.api.config.attribute.Modifiable;
+import me.moros.bending.api.platform.Direction;
+import me.moros.bending.api.platform.block.Block;
+import me.moros.bending.api.platform.world.WorldUtil;
+import me.moros.bending.api.temporal.TempBlock;
+import me.moros.bending.api.user.User;
+import me.moros.bending.api.util.functional.Policies;
+import me.moros.bending.api.util.functional.RemovalPolicy;
+import me.moros.bending.api.util.material.EarthMaterials;
 import me.moros.math.FastMath;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 
@@ -144,7 +144,7 @@ public class EarthDome extends AbilityInstance {
     private final int height = 3;
 
     @Override
-    public Iterable<String> path() {
+    public List<String> path() {
       return List.of("abilities", "earth", "earthdome");
     }
 

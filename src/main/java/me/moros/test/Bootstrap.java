@@ -21,12 +21,12 @@ package me.moros.test;
 
 import java.util.ResourceBundle;
 
-import me.moros.bending.locale.Message;
-import me.moros.bending.locale.Translation;
-import me.moros.bending.model.Element;
-import me.moros.bending.model.ability.AbilityDescription;
-import me.moros.bending.model.ability.Activation;
-import me.moros.bending.model.registry.Registries;
+import me.moros.bending.api.ability.AbilityDescription;
+import me.moros.bending.api.ability.Activation;
+import me.moros.bending.api.ability.element.Element;
+import me.moros.bending.api.locale.Message;
+import me.moros.bending.api.locale.Translation;
+import me.moros.bending.api.registry.Registries;
 import me.moros.test.ability.EarthDome;
 import net.kyori.adventure.util.UTF8ResourceBundleControl;
 import org.bukkit.plugin.java.JavaPlugin;

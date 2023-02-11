@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     compileOnly("me.moros", "bending-api", "3.0.0-SNAPSHOT")
-    compileOnly("io.papermc.paper", "paper-api", "1.18.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper", "paper-api", "1.19.3-R0.1-SNAPSHOT")
 }
 
 tasks {
