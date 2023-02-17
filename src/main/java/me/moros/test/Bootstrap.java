@@ -24,16 +24,16 @@ import java.util.ResourceBundle;
 import me.moros.bending.api.ability.AbilityDescription;
 import me.moros.bending.api.ability.Activation;
 import me.moros.bending.api.ability.element.Element;
+import me.moros.bending.api.addon.Addon;
 import me.moros.bending.api.locale.Message;
 import me.moros.bending.api.locale.Translation;
 import me.moros.bending.api.registry.Registries;
 import me.moros.test.ability.EarthDome;
 import net.kyori.adventure.util.UTF8ResourceBundleControl;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class Bootstrap extends JavaPlugin {
+public class Bootstrap implements Addon {
   @Override
-  public void onLoad() { // Notice, we use onLoad and not onEnable.
+  public void load() {
     // First let's register our AbilityDescription
     AbilityDescription earthDome = AbilityDescription.builder("EarthDome", EarthDome::new)
       .element(Element.EARTH).activation(Activation.SNEAK).build();

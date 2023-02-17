@@ -1,8 +1,0 @@
-name: bending-test-plugin
-version: ${pluginVersion}
-main: me.moros.test.Bootstrap
-author: Moros
-description: Example ability for Bending
-website: https://github.com/PrimordialMoros/Bending
-depend: [Bending]
-api-version: 1.19

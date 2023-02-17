@@ -41,7 +41,6 @@ import me.moros.bending.api.util.functional.Policies;
 import me.moros.bending.api.util.functional.RemovalPolicy;
 import me.moros.bending.api.util.material.EarthMaterials;
 import me.moros.math.FastMath;
-import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 
 public class EarthDome extends AbilityInstance {
   private User user;
@@ -118,7 +117,7 @@ public class EarthDome extends AbilityInstance {
   }
 
   @Override
-  public @MonotonicNonNull User user() {
+  public User user() {
     return user;
   }
 
