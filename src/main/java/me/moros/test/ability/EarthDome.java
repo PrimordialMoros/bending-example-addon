@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Moros
+ * Copyright 2022-2024 Moros
  *
  * This file is part of Bending.
  *
@@ -134,7 +134,7 @@ public class EarthDome extends AbilityInstance {
     }
   }
 
-  private static class Config extends Configurable {
+  private static final class Config implements Configurable {
     @Modifiable(Attribute.COOLDOWN)
     private final long cooldown = 9000;
     @Modifiable(Attribute.RADIUS)

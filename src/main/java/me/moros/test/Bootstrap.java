@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Moros
+ * Copyright 2022-2024 Moros
  *
  * This file is part of Bending.
  *
@@ -25,7 +25,6 @@ import me.moros.bending.api.ability.AbilityDescription;
 import me.moros.bending.api.ability.Activation;
 import me.moros.bending.api.ability.element.Element;
 import me.moros.bending.api.addon.Addon;
-import me.moros.bending.api.locale.Message;
 import me.moros.bending.api.locale.Translation;
 import me.moros.bending.api.registry.Registries;
 import me.moros.test.ability.EarthDome;
@@ -35,13 +34,13 @@ public class Bootstrap implements Addon {
   @Override
   public void load() {
     // First let's register our AbilityDescription
-    AbilityDescription earthDome = AbilityDescription.builder("EarthDome", EarthDome::new)
+    AbilityDescription earthDome = AbilityDescription.builder("bending-addon", "EarthDome", EarthDome::new)
       .element(Element.EARTH).activation(Activation.SNEAK).build();
     Registries.ABILITIES.register(earthDome);
 
     // Now we construct a translation for the default locale
     // Note: You can also manually construct a translation using Translation#create but bundles are easier to manage for multiple keys
-    ResourceBundle bundle = ResourceBundle.getBundle("earthdome", Message.DEFAULT_LOCALE, UTF8ResourceBundleControl.get());
+    ResourceBundle bundle = ResourceBundle.getBundle("earthdome", Translation.DEFAULT_LOCALE, UTF8ResourceBundleControl.get());
     // If you want to register multiple locales then make sure to provide unique keys for each locale.
     Translation translation = Translation.fromBundle(earthDome.key(), bundle); // Since we are only registering one locale, we'll use the ability key
 

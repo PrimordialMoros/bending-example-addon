@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.moros"
-version = "1.4.0"
+version = "1.5.0"
 
 java {
     toolchain {
@@ -17,5 +17,5 @@ repositories {
 }
 
 dependencies {
-    compileOnly("me.moros", "bending-api", "3.1.0-SNAPSHOT")
+    compileOnly("me.moros", "bending-api", "3.6.0")
 }
