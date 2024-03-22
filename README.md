@@ -1,5 +1,5 @@
-# bending-test-plugin
+# Bending Example Addon
 
-This is a test plugin for [Bending](https://github.com/PrimordialMoros/Bending) that also serves as an example.
+This is an example addon for [Bending](https://github.com/PrimordialMoros/Bending).
 
-It currently registers a new move called EarthDome.
+It registers a new ability called EarthDome.
