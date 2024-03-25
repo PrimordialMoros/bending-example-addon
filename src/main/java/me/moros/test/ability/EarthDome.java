@@ -43,7 +43,6 @@ import me.moros.bending.api.util.material.EarthMaterials;
 import me.moros.math.FastMath;
 
 public class EarthDome extends AbilityInstance {
-  private User user;
   private Config userConfig;
   private RemovalPolicy removalPolicy;
 
