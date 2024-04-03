@@ -135,11 +135,11 @@ public class EarthDome extends AbilityInstance {
 
   private static final class Config implements Configurable {
     @Modifiable(Attribute.COOLDOWN)
-    private final long cooldown = 9000;
+    private long cooldown = 9000;
     @Modifiable(Attribute.RADIUS)
-    private final double radius = 3;
+    private double radius = 3;
     @Modifiable(Attribute.HEIGHT)
-    private final int height = 3;
+    private int height = 3;
 
     @Override
     public List<String> path() {
