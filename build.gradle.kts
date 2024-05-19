@@ -6,7 +6,7 @@ group = "me.moros"
 version = "1.5.0"
 
 java.toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+    languageVersion.set(JavaLanguageVersion.of(21))
 }
 
 repositories {
@@ -15,5 +15,5 @@ repositories {
 }
 
 dependencies {
-    compileOnly("me.moros", "bending-api", "3.6.0")
+    compileOnly("me.moros", "bending-api", "3.8.0")
 }
