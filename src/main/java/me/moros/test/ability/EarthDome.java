@@ -71,7 +71,7 @@ public class EarthDome extends AbilityInstance {
 
   @Override
   public void loadConfig() {
-    userConfig = user.game().configProcessor().calculate(this, new Config());
+    userConfig = user.game().configProcessor().calculate(this, Config.class);
   }
 
   @Override
@@ -144,11 +144,6 @@ public class EarthDome extends AbilityInstance {
     @Override
     public List<String> path() {
       return List.of("abilities", "earth", "earthdome");
-    }
-
-    @Override
-    public boolean external() {
-      return true;
     }
   }
 }
