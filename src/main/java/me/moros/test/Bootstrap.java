@@ -25,6 +25,7 @@ import me.moros.bending.api.ability.AbilityDescription;
 import me.moros.bending.api.ability.Activation;
 import me.moros.bending.api.ability.element.Element;
 import me.moros.bending.api.addon.Addon;
+import me.moros.bending.api.addon.BendingContext;
 import me.moros.bending.api.locale.Translation;
 import me.moros.bending.api.registry.Registries;
 import me.moros.test.ability.EarthDome;
@@ -32,7 +33,7 @@ import net.kyori.adventure.util.UTF8ResourceBundleControl;
 
 public class Bootstrap implements Addon {
   @Override
-  public void load() {
+  public void load(BendingContext context) {
     // First let's register our AbilityDescription
     AbilityDescription earthDome = AbilityDescription.builder("bending-addon", "EarthDome", EarthDome::new)
       .element(Element.EARTH).activation(Activation.SNEAK).build();
