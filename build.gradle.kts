@@ -15,5 +15,5 @@ repositories {
 }
 
 dependencies {
-    compileOnly("me.moros", "bending-api", "3.12.0-SNAPSHOT")
+    compileOnly("me.moros", "bending-api", "3.12.0")
 }
