@@ -11,9 +11,9 @@ java.toolchain {
 
 repositories {
     mavenCentral() // for bending-api releases
-    maven("https://oss.sonatype.org/content/repositories/snapshots/") // for bending-api snapshots
+    maven("https://central.sonatype.com/repository/maven-snapshots/") // for bending-api snapshots
 }
 
 dependencies {
-    compileOnly("me.moros", "bending-api", "3.12.0")
+    compileOnly("me.moros", "bending-api", "3.13.0-SNAPSHOT")
 }
