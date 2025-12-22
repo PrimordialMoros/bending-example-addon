@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.moros"
-version = "1.7.0"
+version = "1.8.0"
 
 java.toolchain {
     languageVersion.set(JavaLanguageVersion.of(21))
@@ -15,5 +15,5 @@ repositories {
 }
 
 dependencies {
-    compileOnly("me.moros", "bending-api", "3.13.0-SNAPSHOT")
+    compileOnly("me.moros", "bending-api", "3.15.0")
 }

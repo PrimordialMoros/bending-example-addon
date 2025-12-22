@@ -29,7 +29,6 @@ import me.moros.bending.api.addon.BendingContext;
 import me.moros.bending.api.locale.Translation;
 import me.moros.bending.api.registry.Registries;
 import me.moros.test.ability.EarthDome;
-import net.kyori.adventure.util.UTF8ResourceBundleControl;
 
 public class Bootstrap implements Addon {
   @Override
@@ -41,7 +40,7 @@ public class Bootstrap implements Addon {
 
     // Now we construct a translation for the default locale
     // Note: You can also manually construct a translation using Translation#create but bundles are easier to manage for multiple keys
-    ResourceBundle bundle = ResourceBundle.getBundle("earthdome", Translation.DEFAULT_LOCALE, UTF8ResourceBundleControl.get());
+    ResourceBundle bundle = ResourceBundle.getBundle("earthdome", Translation.DEFAULT_LOCALE);
     // If you want to register multiple locales then make sure to provide unique keys for each locale.
     Translation translation = Translation.fromBundle(earthDome.key(), bundle); // Since we are only registering one locale, we'll use the ability key
 
