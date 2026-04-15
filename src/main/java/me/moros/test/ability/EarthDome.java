@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2024 Moros
+ * Copyright 2022-2026 Moros
  *
  * This file is part of Bending.
  *
